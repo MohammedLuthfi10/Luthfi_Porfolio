@@ -3257,8 +3257,9 @@ img.u-pull-left {
 }
 
 .intro-scrolldown svg {
-    height : var(--vspace-0_75);
-    width  : var(--vspace-0_75);
+    height     : var(--vspace-0_75);
+    width      : var(--vspace-0_75);
+    animation  : bounceDown 2s infinite;
 }
 
 .intro-scrolldown svg path {
@@ -3269,6 +3270,18 @@ img.u-pull-left {
 .intro-scrolldown:focus svg path,
 .intro-scrolldown:hover svg path {
     fill : var(--color-1);
+}
+
+@keyframes bounceDown {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
 }
 
 /* ------------------------------------------------------------------- 
@@ -3593,7 +3606,63 @@ img.u-pull-left {
     margin-top : 0;
 }
 
-/* --------------------------------------------------------------------
+/* -------------------------------------------------------------------- 
+ * ## portfolio filter buttons
+ * -------------------------------------------------------------------- */
+.folio-filter {
+    display         : flex;
+    flex-wrap       : wrap;
+    gap             : var(--vspace-0_5);
+    margin-top      : var(--vspace-2);
+    margin-bottom   : var(--vspace-3);
+}
+
+.folio-filter__btn {
+    background      : transparent;
+    border          : 1px solid var(--color-border);
+    color           : var(--color-text);
+    font-family     : var(--font-1);
+    font-size       : var(--text-sm);
+    font-weight     : 500;
+    padding         : var(--vspace-0_375) var(--vspace-1);
+    border-radius   : var(--border-radius);
+    cursor          : pointer;
+    transition      : all 0.3s ease;
+    outline         : none;
+}
+
+.folio-filter__btn:hover {
+    border-color    : var(--color-1);
+    color           : var(--color-1);
+}
+
+.folio-filter__btn.active {
+    background-color : var(--color-1);
+    border-color     : var(--color-1);
+    color            : var(--color-black);
+}
+
+.folio-list__item.hide {
+    display : none;
+}
+
+.folio-list__item.show {
+    display : block;
+    animation : fadeInUp 0.5s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity   : 0;
+        transform : translateY(20px);
+    }
+    to {
+        opacity   : 1;
+        transform : translateY(0);
+    }
+}
+
+/* -------------------------------------------------------------------- 
  * ## works portfolio
  * -------------------------------------------------------------------- */
 .folio-list {
@@ -3808,6 +3877,16 @@ img.u-pull-left {
 
     .folio-list__item-link {
         padding-left : calc(4 * var(--space));
+    }
+
+    .folio-filter {
+        gap       : var(--vspace-0_375);
+        margin-top : var(--vspace-1_5);
+    }
+
+    .folio-filter__btn {
+        font-size : calc(var(--text-sm) * 0.9);
+        padding   : var(--vspace-0_25) var(--vspace-0_75);
     }
 }
 

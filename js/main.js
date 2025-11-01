@@ -40,11 +40,20 @@
         opacity: [0, 1]
     }, '-=200')
     .add({
-        targets: [ '.s-intro .text-pretitle', '.s-intro .text-huge-title'],
-        translateX: [100, 0],
+        targets: '.s-intro .text-pretitle',
+        translateX: [50, 0],
         opacity: [0, 1],
-        delay: anime.stagger(400)
+        duration: 1000,
+        easing: 'easeOutCubic'
     })
+    .add({
+        targets: '.s-intro .text-huge-title',
+        translateX: [80, 0],
+        opacity: [0, 1],
+        duration: 1200,
+        easing: 'easeOutCubic',
+        delay: 200
+    }, '-=400')
     .add({
         targets: '.circles span',
         keyframes: [
@@ -346,6 +355,59 @@
     }; // end ssMoveTo
 
 
+   /* Portfolio Filter
+    * ------------------------------------------------------ */
+    const ssPortfolioFilter = function() {
+
+        const filterButtons = document.querySelectorAll('.folio-filter__btn');
+        const portfolioItems = document.querySelectorAll('.folio-list__item');
+
+        if (!filterButtons.length || !portfolioItems.length) return;
+
+        // Initialize all items as visible on load
+        portfolioItems.forEach(function(item) {
+            item.classList.add('show');
+        });
+
+        filterButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                const filterValue = this.getAttribute('data-filter');
+
+                // Update active button
+                filterButtons.forEach(function(btn) {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+
+                // Filter portfolio items
+                portfolioItems.forEach(function(item) {
+                    const category = item.getAttribute('data-category');
+                    
+                    if (filterValue === 'all' || category === filterValue) {
+                        item.classList.remove('hide');
+                        item.classList.add('show');
+                    } else {
+                        item.classList.add('hide');
+                        item.classList.remove('show');
+                    }
+                });
+
+                // Re-animate visible items using anime.js
+                const visibleItems = document.querySelectorAll('.folio-list__item.show');
+                anime({
+                    targets: visibleItems,
+                    opacity: [0, 1],
+                    translateY: [30, 0],
+                    delay: anime.stagger(100),
+                    duration: 500,
+                    easing: 'easeOutCubic'
+                });
+            });
+        });
+
+    }; // end ssPortfolioFilter
+
+
    /* Initialize
     * ------------------------------------------------------ */
     (function ssInit() {
@@ -358,6 +420,7 @@
         ssLightbox();
         ssAlertBoxes();
         ssMoveTo();
+        ssPortfolioFilter();
 
     })();
 
