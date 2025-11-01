@@ -3414,8 +3414,19 @@ img.u-pull-left {
 /* --------------------------------------------------------------------
  * ## about info
  * -------------------------------------------------------------------- */
+.about-info {
+    align-items : center;
+}
+
+.about-info__pic {
+    object-fit     : cover;
+    margin         : 0;
+    vertical-align : bottom;
+}
+
 .about-info__text {
-    padding : 0;
+    padding     : 0;
+    margin-left : 0;
 }
 
 .about-info__text .text-pretitle {
@@ -3425,6 +3436,12 @@ img.u-pull-left {
 .about-info__text .btn {
     margin-top    : var(--vspace-1);
     margin-bottom : 0;
+}
+
+.about-cv-btn {
+    width        : auto;
+    display      : inline-block;
+    max-width    : 300px;
 }
 
 /* --------------------------------------------------------------------
@@ -3529,6 +3546,18 @@ img.u-pull-left {
  * responsive:
  * about
  * ------------------------------------------------------------------- */
+@media screen and (max-width: 1300px) {
+    .about-info__text {
+        padding : 0;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .about-info__text {
+        padding     : 0;
+        margin-left : 0;
+    }
+}
 
 @media screen and (max-width: 1000px) {
     .about-timelines {
@@ -3546,11 +3575,6 @@ img.u-pull-left {
     }
 }
 
-@media screen and (max-width: 600px) {
-    .about-info {
-        width : 100%;
-    }
-}
 
 @media screen and (max-width: 400px) {
     .about-timelines {
