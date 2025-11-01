@@ -3414,21 +3414,8 @@ img.u-pull-left {
 /* --------------------------------------------------------------------
  * ## about info
  * -------------------------------------------------------------------- */
-.about-info {
-    --gutter    : 0;
-    width       : 100%;
-    align-items : center;
-}
-
-.about-info__pic {
-    object-fit     : cover;
-    margin         : 0;
-    vertical-align : bottom;
-}
-
 .about-info__text {
-    padding     : var(--vspace-3_5) 10vw var(--vspace-2) 0;
-    margin-left : -4rem;
+    padding : 0;
 }
 
 .about-info__text .text-pretitle {
@@ -3542,24 +3529,6 @@ img.u-pull-left {
  * responsive:
  * about
  * ------------------------------------------------------------------- */
-@media screen and (max-width: 1300px) {
-    .about-info__text {
-        padding : var(--vspace-2) 8rem var(--vspace-1_5) 0;
-    }
-}
-
-@media screen and (max-width: 1200px) {
-    .about-info {
-        --gutter  : 1.6rem;
-        width     : 92%;
-        max-width : 800px;
-    }
-
-    .about-info__text {
-        padding     : var(--vspace-1) 0 0 0;
-        margin-left : 0;
-    }
-}
 
 @media screen and (max-width: 1000px) {
     .about-timelines {
