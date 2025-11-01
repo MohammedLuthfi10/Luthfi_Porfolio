@@ -3605,8 +3605,13 @@ img.u-pull-left {
 }
 
 .folio-list__item {
-    margin-bottom : var(--vspace-1);
+    margin-bottom : var(--vspace-1_5);
     position      : relative;
+    transition    : transform 0.3s ease;
+}
+
+.folio-list__item:hover {
+    transform : translateX(4px);
 }
 
 .folio-list__item-link {
@@ -3616,6 +3621,7 @@ img.u-pull-left {
     color               : white;
     transition-duration : .5s;
     position            : relative;
+    border-radius       : 4px;
 }
 
 .folio-list__item-link:focus,
@@ -3628,6 +3634,11 @@ img.u-pull-left {
 .folio-list__item-link:hover .folio-list__item-pic::before {
     opacity    : 1;
     visibility : visible;
+}
+
+.folio-list__item-link:focus .folio-list__item-pic img,
+.folio-list__item-link:hover .folio-list__item-pic img {
+    transform : scale(1.05);
 }
 
 .folio-list__item-link:focus .folio-list__item-pic::after,
@@ -3655,6 +3666,7 @@ img.u-pull-left {
     width          : var(--item-min-height);
     height         : var(--item-min-height);
     margin         : 0;
+    transition     : transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 .folio-list__item-pic::before,
@@ -3736,12 +3748,18 @@ img.u-pull-left {
 }
 
 .folio-list__proj-link {
-    display  : block;
-    height   : var(--vspace-1);
-    width    : var(--vspace-1);
-    position : absolute;
-    top      : .8rem;
-    right    : var(--vspace-0_75);
+    display     : block;
+    height      : var(--vspace-1);
+    width       : var(--vspace-1);
+    position    : absolute;
+    top         : .8rem;
+    right       : var(--vspace-0_75);
+    transition  : transform 0.3s ease, opacity 0.3s ease;
+    opacity     : 0.7;
+}
+
+.folio-list__item:hover .folio-list__proj-link {
+    opacity : 1;
 }
 
 .folio-list__proj-link svg {
@@ -3759,6 +3777,38 @@ img.u-pull-left {
 
 .folio-list__proj-link:hover {
     transform : scale(1.2);
+}
+
+/* ------------------------------------------------------------------- 
+ * ## portfolio responsive improvements
+ * ------------------------------------------------------------------- */
+@media screen and (max-width: 700px) {
+    .folio-list__item {
+        margin-bottom : var(--vspace-1);
+    }
+
+    .folio-list__item:hover {
+        transform : translateX(2px);
+    }
+
+    .folio-list__item-link {
+        padding-left : calc(4.5 * var(--space));
+    }
+
+    .folio-list__item-pic img {
+        width  : calc(var(--item-min-height) * 0.85);
+        height : calc(var(--item-min-height) * 0.85);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .folio-list {
+        --item-min-height : var(--vspace-3_5);
+    }
+
+    .folio-list__item-link {
+        padding-left : calc(4 * var(--space));
+    }
 }
 
 /* ------------------------------------------------------------------- 
